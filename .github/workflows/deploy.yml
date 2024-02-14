@@ -6,27 +6,19 @@ on:
       - main
 
 jobs:
-  deploy:
+  deploy_job:
     runs-on: ubuntu-latest
-
+    name: deploy
     steps:
-    - name: Checkout repository
+    - name: Checkout
       uses: actions/checkout@v2
-
-    - name: Setup PHP
-      uses: shivammathur/setup-php@v2
+    - name: Deploy file
+      uses: wlixcc/SFTP-Deploy-Action@v1.2.4
       with:
-        php-version: '7.4'
-
-    - name: Install dependencies
-      run: composer install
-
-    - name: Deploy to SFTP
-      uses: w1r3s33d/sftp-deploy-action@v3
-      with:
+        username: ${{ secrets.SFTP_USERNAME }}
         server: ${{ secrets.SFTP_SERVER }}
         port: ${{ secrets.SFTP_PORT }}
-        username: ${{ secrets.SFTP_USERNAME }}
+        local_path: './MisFrases/*'
+        remote_path: '/'
+        sftp_only: true
         password: ${{ secrets.SFTP_PASSWORD }}
-        local: "./MisFrases/*"
-        remote: "/"
