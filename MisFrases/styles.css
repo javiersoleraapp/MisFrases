@@ -1,14 +1,18 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f8f8f8;
     margin: 0;
+    background-image: url('img/header1.jpg'); /* Ruta a la imagen de fondo */
+    background-position: center top; /* Posición de la imagen de fondo */
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Fija la imagen de fondo al hacer scroll */
+    background-size: cover; /* Cubre toda la ventana con la imagen */
 }
 
 .container {
     max-width: 600px;
     margin: 50px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo semitransparente para mejorar la legibilidad del texto */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     overflow: hidden;
@@ -89,7 +93,6 @@ button:hover {
     background-color: #45a049;
 }
 
-/* ... */
 .error-message {
     color: #cc0000;
     margin-top: 10px;
