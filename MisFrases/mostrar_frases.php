@@ -3,6 +3,9 @@
 if (file_exists("_mensajes.txt")) {
     $frases = file("_mensajes.txt", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
+    // Revertir el orden de las frases (las más recientes arriba)
+    $frases = array_reverse($frases);
+
     // Mostrar frases
     foreach ($frases as $frase) {
         list($fecha, $contenido, $usuario, $ip) = explode(" | ", $frase, 4);
