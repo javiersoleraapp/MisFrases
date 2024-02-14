@@ -1,0 +1,4 @@
+# Ignorar archivos de contraseñas, mensajes y usuarios con el prefijo _
+_contraseñas.txt
+_mensajes.txt
+_usuarios.txt
