@@ -24,11 +24,17 @@ if ($usuario !== "Anónimo") {
     }
 }
 
+// Si el usuario es anónimo, establece $idUsuario como NULL
+$idUsuario = $usuario !== "Anónimo" ? $idUsuario : NULL;
+
 // Inserta datos en la base de datos con el prefijo jssp
-$sql = "INSERT INTO jssp_mensajes (contenido, fecha_hora, usuario_id, ip) VALUES ('$frase', '$fecha', '$idUsuario', '$ip')";
+$sql = "INSERT INTO jssp_mensajes (contenido, fecha_hora, usuario_id, ip) VALUES ('$frase', '$fecha', $idUsuario, '$ip')";
 
 if ($conexion->query($sql) === TRUE) {
     echo "Frase publicada con éxito";
+    // Redirige a la pantalla principal después del éxito
+    header("Location: index.php");
+    exit;
 } else {
     // Muestra detalles del error
     echo "Error al publicar frase: " . $conexion->error;
