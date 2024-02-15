@@ -41,4 +41,8 @@ if ($conexion->query($sql) === TRUE) {
 
 // Cierra la conexión
 $conexion->close();
+
+// Redirige a la página principal
+header("Location: index.php");
+exit;
 ?>

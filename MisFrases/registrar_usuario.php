@@ -16,10 +16,15 @@ $sql = "INSERT INTO jssp_usuarios (username, password) VALUES ('$username', '$pa
 
 if ($conexion->query($sql) === TRUE) {
     echo "Usuario registrado con éxito";
+    // Cierra la conexión
+    $conexion->close();
+    // Redirige a la página principal
+    header("Location: index.php");
+    exit;
 } else {
-    echo "Error al registrar usuario: " . $conexion->error;
-}
 
-// Cierra la conexión
-$conexion->close();
+    echo "Error al registrar usuario: " . $conexion->error;
+    // Cierra la conexión
+    $conexion->close();
+}
 ?>
