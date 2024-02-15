@@ -29,9 +29,6 @@ $sql = "INSERT INTO jssp_mensajes (contenido, fecha_hora, usuario_id, ip) VALUES
 
 if ($conexion->query($sql) === TRUE) {
     echo "Frase publicada con éxito";
-    // Redirige a la pantalla principal después del éxito
-    header("Location: index.php");
-    exit;
 } else {
     // Muestra detalles del error
     echo "Error al publicar frase: " . $conexion->error;
