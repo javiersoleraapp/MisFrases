@@ -1,25 +1,33 @@
 <?php
-session_start();
+// publicar.php
+include("config.php");
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // Obtén la frase, la dirección IP y el usuario (si existe)
-    $frase = $_POST["frase"];
-    $ip = $_SERVER["REMOTE_ADDR"];
-    $usuario = isset($_SESSION['username']) ? $_SESSION['username'] : "Anónimo";
+// Obtén datos del formulario
+$frase = $_POST['frase'];
+$usuario = isset($_SESSION['username']) ? $_SESSION['username'] : "Anónimo";
 
-    // Formatea la fecha actual
-    $fecha = date("Y-m-d H:i:s");
+// Formatea la fecha actual
+$fecha = date("Y-m-d H:i:s");
 
-    // Almacena la frase, la dirección IP, el usuario y la fecha en un archivo
-    $mensaje = "$fecha | $frase | $usuario | $ip\n";
-    file_put_contents("_mensajes.txt", $mensaje, FILE_APPEND);
-
-    // Redirige a la página principal
-    header("Location: index.php");
-    exit;
-} else {
-    // Si se intenta acceder directamente a este archivo sin un formulario POST, redirige a la página principal
-    header("Location: index.php");
-    exit;
+// Obtén el ID del usuario (si existe)
+$idUsuario = null;
+if ($usuario !== "Anónimo") {
+    $result = $conexion->query("SELECT id FROM jssp_usuarios WHERE username = '$usuario'");
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $idUsuario = $row['id'];
+    }
 }
+
+// Inserta datos en la base de datos con el prefijo jssp
+$sql = "INSERT INTO jssp_mensajes (contenido, fecha_hora, usuario_id, ip) VALUES ('$frase', '$fecha', '$idUsuario', '$ip')";
+
+if ($conexion->query($sql) === TRUE) {
+    echo "Frase publicada con éxito";
+} else {
+    echo "Error al publicar frase: " . $conexion->error;
+}
+
+// Cierra la conexión
+$conexion->close();
 ?>
