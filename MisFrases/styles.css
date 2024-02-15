@@ -18,6 +18,44 @@ body {
     overflow: hidden;
 }
 
+.menu {
+    width: 250px;
+    height: 100%;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    position: fixed;
+    overflow: hidden;
+}
+
+.menu-header {
+    padding: 20px;
+    text-align: center;
+    background-color: #233140;
+}
+
+.menu-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.menu-list li {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #34495e;
+}
+
+.menu-list li a {
+    color: #ecf0f1;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+}
+
+.content {
+    margin-left: 250px;
+    padding: 20px;
+}
+
 h1 {
     color: #333;
     text-align: center;

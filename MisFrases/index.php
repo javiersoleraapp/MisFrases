@@ -1,17 +1,22 @@
+<?php
+// index.php
+include("config.php");
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juntas sí se puede</title>
-    <meta name="description" content="Portal libre para poner lo que quieras. Quedará visible para siempre. El autor de la página no se hace responsable de nada de lo que aquí se escriba.">
     <link rel="stylesheet" href="styles.css">
+    <title>Juntas sí se puede</title>
 </head>
 <body>
 
-<div class="container">
-    <h1>Juntas sí se puede</h1>
+<?php include("menu.php"); ?>
 
+<div class="content">
+    <h1>Juntas sí se puede</h1>
     <!-- Formulario para publicar una frase (sin autenticación) -->
     <form action="publicar.php" method="post">
         <label for="frase">Portal libre para poner lo que quieras. Quedará visible para siempre. El autor de la página no se hace responsable de nada de lo que aquí se escriba:</label>
