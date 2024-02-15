@@ -2,6 +2,11 @@
 // publicar.php
 include("config.php");
 
+// Configuración para mostrar errores (elimina estas líneas en un entorno de producción)
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 // Obtén datos del formulario
 $frase = $_POST['frase'];
 $usuario = isset($_SESSION['username']) ? $_SESSION['username'] : "Anónimo";
@@ -25,7 +30,10 @@ $sql = "INSERT INTO jssp_mensajes (contenido, fecha_hora, usuario_id, ip) VALUES
 if ($conexion->query($sql) === TRUE) {
     echo "Frase publicada con éxito";
 } else {
+    // Muestra detalles del error
     echo "Error al publicar frase: " . $conexion->error;
+    // También puedes agregar detalles adicionales, como $sql para ver la consulta exacta que causó el error
+    echo "<br>Query: " . $sql;
 }
 
 // Cierra la conexión
