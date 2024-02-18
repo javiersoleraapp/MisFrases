@@ -1,3 +1,5 @@
+
+/*
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
@@ -6,6 +8,12 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed; /* Fija la imagen de fondo al hacer scroll */
     background-size: cover; /* Cubre toda la ventana con la imagen */
+}
+*/
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
 }
 
 .container {
@@ -16,6 +24,18 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     overflow: hidden;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #233140;
+}
+
+.logo img {
+    height: 40px; /* ajusta la altura según sea necesario */
 }
 
 .menu {
