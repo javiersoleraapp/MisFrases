@@ -5,7 +5,7 @@ include("config.php");
 // Configuración para mostrar errores (elimina estas líneas en un entorno de producción)
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+error_reporting(E_ERROR);
 
 // Obtén datos del formulario
 $frase = $_POST['frase'];
